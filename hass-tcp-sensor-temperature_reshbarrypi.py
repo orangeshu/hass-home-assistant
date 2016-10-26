@@ -18,7 +18,7 @@ device_file = device_folder + '/w1_slave'
 
 DEBUG = True
 
-DST_SERVER_IP = 'localhost'
+DST_SERVER_IP = '0.0.0.0'
 DST_SERVER_PORT = 55056
 
 backlog = 5
@@ -100,7 +100,7 @@ while True:
             # there is big difference comapare to sock.sendall(msg) in the client
             #packed_data = packer.pack(*data)
             #sock.sendall(packed_data)
-            temperature=read_temp()
+            temperature=str(read_temp())
             client.send(temperature)
             print 'Sent: %s back to %s' % (temperature, address)
     except Exception as e:
